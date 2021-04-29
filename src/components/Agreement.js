@@ -7,7 +7,7 @@ export const Agreement = (props) => {
       <Text
         style={styles.agreementText}
         onPress={() => {
-          Alert.alert("test");
+          Alert.alert("Пользовательское соглашение");
         }}>
         Пользовательское соглашение
       </Text>
@@ -26,5 +26,6 @@ const styles = StyleSheet.create({
   agreementText: {
     fontSize: 14,
     paddingVertical: 15,
+    color: "#6F707A",
   },
 });

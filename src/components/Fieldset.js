@@ -85,11 +85,11 @@ const styles = StyleSheet.create({
     marginBottom: 0,
     width: "90%",
   },
-  passwordField: {},
   forgotPassword: {
     color: "#681785",
     paddingLeft: 20,
-    fontSize: 10,
+    paddingTop: 20,
+    fontSize: 15,
     lineHeight: 13,
   },
   textinputIcon: {
