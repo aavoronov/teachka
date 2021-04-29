@@ -9,7 +9,7 @@ import {
   Alert,
 } from "react-native";
 
-export const Fieldset = (props) => {
+export const AuthFieldset = (props) => {
   const [secure, setSecure] = useState(props.secure);
 
   return (
