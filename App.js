@@ -1,13 +1,13 @@
 //import { StatusBar } from 'expo-status-bar';
 import React from "react";
 import { KeyboardAvoidingView, StyleSheet, View } from "react-native";
-import { AppLoading } from "expo-app-loading";
-import { Navbar } from "./src/Navbar";
-import { Fieldset } from "./src/Fieldset";
-import { Logo } from "./src/Logo";
+// import { AppLoading } from "expo-app-loading";
+import { Navbar } from "./src/components/Navbar";
+import { Fieldset } from "./src/components/Fieldset";
+import { Logo } from "./src/components/Logo";
 import { useFonts } from "expo-font";
-import { ButtonCustom } from "./src/ButtonCustom";
-import { Agreement } from "./src/Agreement";
+import { ButtonCustom } from "./src/components/ButtonCustom";
+import { Agreement } from "./src/components/Agreement";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -22,7 +22,7 @@ export default function App() {
   // if (!fontsLoaded) return null;
   // else
   return (
-    <View style={[styles.regularFont, { flex: 1, paddingBottom: 30 }]}>
+    <View style={[styles.regularFont, { flex: 1 }]}>
       <Navbar title='Вход в систему' />
       <View style={[styles.container, { flex: 1 }]}>
         <Logo showTexterra={true} />
@@ -44,6 +44,6 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 24,
-    paddingBottom: 30,
+    paddingBottom: 20,
   },
 });

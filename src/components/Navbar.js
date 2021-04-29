@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import Constants from "expo-constants";
 
 export const Navbar = (props) => {
   return (

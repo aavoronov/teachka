@@ -6,6 +6,7 @@ import {
   View,
   Image,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 
 export const Fieldset = (props) => {
@@ -45,21 +46,26 @@ export const Fieldset = (props) => {
           {secure ? (
             <Image
               style={styles.textinputIcon}
-              source={require("../assets/img/crossed-eye-icon.png")}
+              source={require("../../assets/img/crossed-eye-icon.png")}
               fadeDuration={0}
               style={{ width: 30, height: 30 }}
             />
           ) : (
             <Image
               style={styles.textinputIcon}
-              source={require("../assets/img/open-eye-icon.png")}
+              source={require("../../assets/img/open-eye-icon.png")}
               fadeDuration={0}
               style={{ width: 30, height: 20 }}
             />
           )}
         </TouchableOpacity>
       </View>
-      <Text style={styles.forgotPassword}>Забыли пароль?</Text>
+      <TouchableOpacity
+        onPress={() => {
+          Alert.alert("Забыл пароль? Соболезную");
+        }}>
+        <Text style={styles.forgotPassword}>Забыли пароль?</Text>
+      </TouchableOpacity>
     </View>
   );
 };

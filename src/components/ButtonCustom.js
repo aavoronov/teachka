@@ -4,14 +4,13 @@ import {
   StyleSheet,
   Text,
   View,
-  KeyboardAvoidingView,
   Keyboard,
   Platform,
 } from "react-native";
 
 export const ButtonCustom = (props) => {
   return (
-    <View>
+    <View style={{ marginTop: 20 }}>
       <TouchableOpacity
         behavior={Platform.OS == "ios" ? "padding" : "height"}
         onPress={() => Keyboard.dismiss}

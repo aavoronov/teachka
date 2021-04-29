@@ -25,6 +25,6 @@ const styles = StyleSheet.create({
   },
   agreementText: {
     fontSize: 14,
-    paddingTop: 25,
+    paddingVertical: 15,
   },
 });
