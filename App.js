@@ -1,11 +1,13 @@
 //import { StatusBar } from 'expo-status-bar';
 import React from "react";
-import { Button, StyleSheet, Text, View, AppLoading } from "react-native";
+import { KeyboardAvoidingView, StyleSheet, View } from "react-native";
+import { AppLoading } from "expo-app-loading";
 import { Navbar } from "./src/Navbar";
 import { Fieldset } from "./src/Fieldset";
 import { Logo } from "./src/Logo";
 import { useFonts } from "expo-font";
 import { ButtonCustom } from "./src/ButtonCustom";
+import { Agreement } from "./src/Agreement";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -17,14 +19,20 @@ export default function App() {
     "SF-Text-Semibold": require("./assets/fonts/SF-UI-Text-Semibold.ttf"),
   });
 
+  // if (!fontsLoaded) return null;
+  // else
   return (
     <View style={[styles.regularFont, { flex: 1, paddingBottom: 30 }]}>
       <Navbar title='Вход в систему' />
       <View style={[styles.container, { flex: 1 }]}>
         <Logo showTexterra={true} />
         <Fieldset secure={true} />
-        <ButtonCustom buttonText='test' />
+        <KeyboardAvoidingView
+          style={{ marginTop: "auto", justifyContent: "flex-end" }}>
+          <ButtonCustom buttonText='Это проп' />
+        </KeyboardAvoidingView>
       </View>
+      <Agreement />
     </View>
   );
 }
@@ -36,5 +44,6 @@ const styles = StyleSheet.create({
   },
   container: {
     paddingHorizontal: 24,
+    paddingBottom: 30,
   },
 });

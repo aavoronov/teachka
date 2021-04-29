@@ -8,18 +8,17 @@ import {
   Keyboard,
   Platform,
 } from "react-native";
-import { useFonts } from "expo-font";
+
 export const ButtonCustom = (props) => {
   return (
-    <KeyboardAvoidingView
-      style={{ marginTop: "auto", justifyContent: "flex-end" }}>
+    <View>
       <TouchableOpacity
         behavior={Platform.OS == "ios" ? "padding" : "height"}
         onPress={() => Keyboard.dismiss}
         style={[styles.button, styles.buttonGreen]}>
         <Text style={styles.buttonText}>{props.buttonText}</Text>
       </TouchableOpacity>
-    </KeyboardAvoidingView>
+    </View>
   );
 };
 
