@@ -8,6 +8,7 @@ import { PasswordRecovery1 } from "./src/screens/PasswordRecovery1";
 import { PasswordRecovery2 } from "./src/screens/PasswordRecovery2";
 import { PasswordRecovery3 } from "./src/screens/PasswordRecovery3";
 import { SupportTicket } from "./src/screens/SupportTicket";
+import { RateUs } from "./src/screens/RateUs";
 import AppLoading from "expo-app-loading";
 
 export default function App() {
@@ -86,7 +87,8 @@ export default function App() {
   // return <PasswordRecovery1 title={"Восстановление пароля"} buttonText={"Дальше"} />;
   // return <PasswordRecovery2 title={"Восстановление пароля"} buttonText={"Дальше"} contact={"----это проп----"} />;
   // return <PasswordRecovery3 title={"Восстановление пароля"} buttonText={"Дальше"} />;
-  return <SupportTicket title={"Заявка в поддержку"} buttonText={"Отправить"} />;
+  // return <SupportTicket title={"Заявка в поддержку"} buttonText={"Отправить"} />;
+  return <RateUs buttonText={"Оценить"} />;
 }
 
 const styles = StyleSheet.create({});
