@@ -24,13 +24,13 @@ export const RateUs = (props) => {
           <ButtonCustom buttonText={props.buttonText} />
         </View>
         <TouchableOpacity
-          behavior={Platform.OS == "ios" ? "padding" : "height"}
+          //behavior={Platform.OS == "ios" ? "padding" : "height"}
           onPress={() => Alert.alert("Так уж и быть, верим, в другой раз")}
           style={[styles.button, { fontFamily: "SF-Display-Semibold" }]}>
           <Text style={styles.buttonText}>В другой раз, может быть</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          behavior={Platform.OS == "ios" ? "padding" : "height"}
+          //behavior={Platform.OS == "ios" ? "padding" : "height"}
           onPress={() => Alert.alert("Мы вам какое плохое зло сделали?")}
           style={[styles.button]}>
           <Text style={styles.buttonText}>Никогда</Text>

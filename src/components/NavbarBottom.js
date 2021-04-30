@@ -1,26 +1,20 @@
 import React from "react";
-import { StyleSheet, Text, View, Alert, TouchableOpacity, Image } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 
 export const NavbarBottom = (props) => {
   return (
     <View style={styles.navbarBottom}>
-      <TouchableOpacity onPress={() => alert("Профиль")}>
-        <View style={styles.buttonContainer}>
-          <Image source={require("../../assets/img/profile-icon.png")} style={{ width: 35, height: 35 }} />
-          <Text>Профиль</Text>
-        </View>
+      <TouchableOpacity onPress={() => alert("Профиль")} style={styles.buttonContainer}>
+        <Image source={require("../../assets/img/profile-icon.png")} style={{ width: 35, height: 35 }} />
+        <Text>Профиль</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => alert("Курсы")}>
-        <View style={styles.buttonContainer}>
-          <Image source={require("../../assets/img/courses-icon.png")} style={{ width: 35, height: 35 }} />
-          <Text>Курсы</Text>
-        </View>
+      <TouchableOpacity onPress={() => alert("Курсы")} style={styles.buttonContainer}>
+        <Image source={require("../../assets/img/courses-icon.png")} style={{ width: 35, height: 35 }} />
+        <Text>Курсы</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => alert("Поддержка")}>
-        <View style={styles.buttonContainer}>
-          <Image source={require("../../assets/img/support-icon.png")} style={{ width: 35, height: 35 }} />
-          <Text>Поддержка</Text>
-        </View>
+      <TouchableOpacity onPress={() => alert("Поддержка")} style={styles.buttonContainer}>
+        <Image source={require("../../assets/img/support-icon.png")} style={{ width: 35, height: 35 }} />
+        <Text>Поддержка</Text>
       </TouchableOpacity>
     </View>
   );
@@ -36,8 +30,8 @@ const styles = StyleSheet.create({
     borderTopWidth: 1,
   },
   buttonContainer: {
+    width: "30%",
     paddingVertical: 5,
-    paddingHorizontal: 22,
     alignItems: "center",
   },
 });
