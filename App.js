@@ -1,8 +1,7 @@
 //import { StatusBar } from 'expo-status-bar';
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
-// import { AppLoading } from "expo-app-loading";
-import Font from "expo-font";
+import { useFonts } from 'expo-font';
 import { Authorization } from "./src/screens/Authorization";
 import { PasswordRecovery1 } from "./src/screens/PasswordRecovery1";
 import { PasswordRecovery2 } from "./src/screens/PasswordRecovery2";
@@ -21,13 +20,8 @@ export default function App() {
     "SF-Text-Semibold": require("./assets/fonts/SF-UI-Text-Semibold.ttf"),
   };
 
-  // const [fontsLoaded, setFontsLoaded] = useState(false);
-
-  // async function _loadFontsAsync() {
-  //   await Font.loadAsync(customFonts);
-  //   setFontsLoaded( !fontsLoaded );
-  // }
-
+  const [loaded, error] = useFonts( customFonts );
+  
   // const [pageId, setPageId] = useState(1);
 
   // {
@@ -71,18 +65,9 @@ export default function App() {
   //   }
   // }
 
-  // if (!fontsLoaded) return null;
-  // else
-  // return (
-  // {
-  //   // _loadFontsAsync();
-  //   if (!fontsLoaded) {
-  //     <Authorization />
-  //   } else {
-  //     <AppLoading />
-  //   }
-  // }
-  // );
+  if (!loaded) {
+    return null;
+  }
   // return <Authorization title={"Вход в систему"} buttonText={"Вход"} />;
   // return <PasswordRecovery1 title={"Восстановление пароля"} buttonText={"Дальше"} />;
   // return <PasswordRecovery2 title={"Восстановление пароля"} buttonText={"Дальше"} contact={"----это проп----"} />;
