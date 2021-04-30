@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-  Image,
-  TouchableOpacity,
-  Alert,
-} from "react-native";
+import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, Alert } from "react-native";
 
 export const AuthFieldset = (props) => {
   const [secure, setSecure] = useState(props.secure);

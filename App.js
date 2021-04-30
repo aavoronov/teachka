@@ -2,21 +2,30 @@
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity } from "react-native";
 // import { AppLoading } from "expo-app-loading";
-import { useFonts } from "expo-font";
+import Font from "expo-font";
 import { Authorization } from "./src/screens/Authorization";
 import { PasswordRecovery1 } from "./src/screens/PasswordRecovery1";
 import { PasswordRecovery2 } from "./src/screens/PasswordRecovery2";
 import { PasswordRecovery3 } from "./src/screens/PasswordRecovery3";
+import { SupportTicket } from "./src/screens/SupportTicket";
+import AppLoading from "expo-app-loading";
 
 export default function App() {
-  let [fontsLoaded] = useFonts({
+  let customFonts = {
     "SF-Display-Regular": require("./assets/fonts/SFProDisplay-Regular.ttf"),
     "SF-Display-Medium": require("./assets/fonts/SFProDisplay-Medium.ttf"),
     "SF-Display-Semibold": require("./assets/fonts/SFProDisplay-Semibold.ttf"),
     "SF-Text-Regular": require("./assets/fonts/SF-UI-Text-Regular.ttf"),
     "SF-Text-Medium": require("./assets/fonts/SF-UI-Text-Medium.ttf"),
     "SF-Text-Semibold": require("./assets/fonts/SF-UI-Text-Semibold.ttf"),
-  });
+  };
+
+  // const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  // async function _loadFontsAsync() {
+  //   await Font.loadAsync(customFonts);
+  //   setFontsLoaded( !fontsLoaded );
+  // }
 
   // const [pageId, setPageId] = useState(1);
 
@@ -63,10 +72,21 @@ export default function App() {
 
   // if (!fontsLoaded) return null;
   // else
-  // return <Authorization />;
-  // return <PasswordRecovery1 />;
-  // return <PasswordRecovery2 />;
-  return <PasswordRecovery3 />;
+  // return (
+  // {
+  //   // _loadFontsAsync();
+  //   if (!fontsLoaded) {
+  //     <Authorization />
+  //   } else {
+  //     <AppLoading />
+  //   }
+  // }
+  // );
+  // return <Authorization title={"Вход в систему"} buttonText={"Вход"} />;
+  // return <PasswordRecovery1 title={"Восстановление пароля"} buttonText={"Дальше"} />;
+  // return <PasswordRecovery2 title={"Восстановление пароля"} buttonText={"Дальше"} contact={"----это проп----"} />;
+  // return <PasswordRecovery3 title={"Восстановление пароля"} buttonText={"Дальше"} />;
+  return <SupportTicket title={"Заявка в поддержку"} buttonText={"Отправить"} />;
 }
 
 const styles = StyleSheet.create({});

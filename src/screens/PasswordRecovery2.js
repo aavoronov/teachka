@@ -8,16 +8,13 @@ import { stylesField } from "../../styles/field";
 import { stylesRegularFont } from "../../styles/regularFont";
 import { stylesContainer } from "../../styles/container";
 
-export const PasswordRecovery2 = () => {
+export const PasswordRecovery2 = (props) => {
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1 }]}>
       <Navbar title='Восстановление пароля' />
       <View style={[stylesContainer.container, { flex: 1 }]}>
         <Logo showTexterra={false} />
-        <Text style={{ paddingBottom: 25 }}>
-          Введите код подтверждения, который был отправлен вам на{" "}
-          {"----это проп----"}
-        </Text>
+        <Text style={{ paddingBottom: 25 }}>Введите код подтверждения, который был отправлен вам на {props.contact}</Text>
         <TextInput
           style={stylesField.field}
           placeholder='Код подтверждения'
@@ -26,9 +23,8 @@ export const PasswordRecovery2 = () => {
           autoCapitalize='none'
           keyboardType='numeric'
         />
-        <KeyboardAvoidingView
-          style={{ marginTop: "auto", justifyContent: "flex-end" }}>
-          <ButtonCustom buttonText='Это проп' />
+        <KeyboardAvoidingView style={{ marginTop: "auto", justifyContent: "flex-end" }}>
+          <ButtonCustom buttonText={props.buttonText} />
           <AbortPasswordRecoveryButton />
         </KeyboardAvoidingView>
       </View>

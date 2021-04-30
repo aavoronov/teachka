@@ -8,7 +8,7 @@ import { stylesField } from "../../styles/field";
 import { stylesRegularFont } from "../../styles/regularFont";
 import { stylesContainer } from "../../styles/container";
 
-export const PasswordRecovery1 = () => {
+export const PasswordRecovery1 = (props) => {
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1 }]}>
       <Navbar title='Восстановление пароля' />
@@ -23,7 +23,7 @@ export const PasswordRecovery1 = () => {
         />
         <KeyboardAvoidingView
           style={{ marginTop: "auto", justifyContent: "flex-end" }}>
-          <ButtonCustom buttonText='Это проп' />
+          <ButtonCustom buttonText={props.buttonText} />
           <AbortPasswordRecoveryButton />
         </KeyboardAvoidingView>
       </View>

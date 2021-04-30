@@ -29,7 +29,7 @@ export const PasswordRecovery3 = (props) => {
         <PassRecoveryFieldset secure={true} />
         <KeyboardAvoidingView
           style={{ marginTop: "auto", justifyContent: "flex-end" }}>
-          <ButtonCustom buttonText='Это проп' />
+          <ButtonCustom buttonText={props.buttonText} />
           <AbortPasswordRecoveryButton />
         </KeyboardAvoidingView>
       </View>
