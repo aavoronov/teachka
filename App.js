@@ -1,14 +1,16 @@
 //import { StatusBar } from 'expo-status-bar';
 import React, { useState } from "react";
-import { StyleSheet, TouchableOpacity } from "react-native";
-import { useFonts } from 'expo-font';
+import { StyleSheet, TouchableOpacity, Platform } from "react-native";
+//import * as Font from "expo-font";
+import { useFonts } from "expo-font";
 import { Authorization } from "./src/screens/Authorization";
 import { PasswordRecovery1 } from "./src/screens/PasswordRecovery1";
 import { PasswordRecovery2 } from "./src/screens/PasswordRecovery2";
 import { PasswordRecovery3 } from "./src/screens/PasswordRecovery3";
 import { SupportTicket } from "./src/screens/SupportTicket";
 import { RateUs } from "./src/screens/RateUs";
-import AppLoading from "expo-app-loading";
+import AppLoading from "expo";
+import { ProgressCustom } from "./src/components/ProgressCustom_copy";
 
 export default function App() {
   let customFonts = {
@@ -20,8 +22,13 @@ export default function App() {
     "SF-Text-Semibold": require("./assets/fonts/SF-UI-Text-Semibold.ttf"),
   };
 
-  const [loaded, error] = useFonts( customFonts );
-  
+  const [loaded, error] = useFonts(customFonts);
+
+  // async function loadApp() {
+  //   await Font.loadAsync(customFonts);
+  // }
+  // const [isReady, setIsready] = useState(false);
+
   // const [pageId, setPageId] = useState(1);
 
   // {
@@ -68,12 +75,12 @@ export default function App() {
   if (!loaded) {
     return null;
   }
-  // return <Authorization title={"Вход в систему"} buttonText={"Вход"} />;
+  return <Authorization title={"Вход в систему"} buttonText={"Вход"} />;
   // return <PasswordRecovery1 title={"Восстановление пароля"} buttonText={"Дальше"} />;
   // return <PasswordRecovery2 title={"Восстановление пароля"} buttonText={"Дальше"} contact={"----это проп----"} />;
   // return <PasswordRecovery3 title={"Восстановление пароля"} buttonText={"Дальше"} />;
   // return <SupportTicket title={"Заявка в поддержку"} buttonText={"Отправить"} />;
-  return <RateUs buttonText={"Оценить"} />;
+  // return <RateUs buttonText={"Оценить"} />;
+  // return <ProgressCustom />;
+  //return <ProgressCustom />;
 }
-
-const styles = StyleSheet.create({});

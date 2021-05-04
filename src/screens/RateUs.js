@@ -33,7 +33,7 @@ export const RateUs = (props) => {
           //behavior={Platform.OS == "ios" ? "padding" : "height"}
           onPress={() => Alert.alert("Мы вам какое плохое зло сделали?")}
           style={[styles.button]}>
-          <Text style={styles.buttonText}>Никогда</Text>
+          <Text style={[styles.buttonText, { fontFamily: "SF-Display-Regular" }]}>Никогда</Text>
         </TouchableOpacity>
       </View>
       <NavbarBottom />
