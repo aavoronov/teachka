@@ -11,6 +11,7 @@ import { SupportTicket } from "./src/screens/SupportTicket";
 import { RateUs } from "./src/screens/RateUs";
 import AppLoading from "expo";
 import { ProgressCustom } from "./src/components/ProgressCustom_copy";
+import { Preloader } from "./src/screens/Preloader";
 
 export default function App() {
   let customFonts = {
@@ -73,7 +74,7 @@ export default function App() {
   // }
 
   if (!loaded) {
-    return null;
+    return <Preloader />;
   }
   return <Authorization title={"Вход в систему"} buttonText={"Вход"} />;
   // return <PasswordRecovery1 title={"Восстановление пароля"} buttonText={"Дальше"} />;
@@ -82,5 +83,5 @@ export default function App() {
   // return <SupportTicket title={"Заявка в поддержку"} buttonText={"Отправить"} />;
   // return <RateUs buttonText={"Оценить"} />;
   // return <ProgressCustom />;
-  //return <ProgressCustom />;
+  // return <Preloader />;
 }
