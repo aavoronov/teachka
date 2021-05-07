@@ -10,15 +10,15 @@ import { stylesContainer } from "../../styles/container";
 import React from "react";
 import { View, StyleSheet, KeyboardAvoidingView } from "react-native";
 
-export const Authorization = (props) => {
+export const Authorization = ({ buttonText, title, buttonVisibility }) => {
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1 }]}>
-      <Navbar title={props.title} />
+      <Navbar title={title} buttonVisibility={buttonVisibility} />
       <View style={[stylesContainer.container, { flex: 1 }]}>
         <Logo showTexterra={true} />
         <AuthFieldset secure={true} />
         <KeyboardAvoidingView style={{ marginTop: "auto", justifyContent: "flex-end" }}>
-          <ButtonCustom buttonText={props.buttonText} />
+          <ButtonCustom buttonText={buttonText} />
         </KeyboardAvoidingView>
       </View>
       <Agreement />

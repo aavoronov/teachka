@@ -7,10 +7,10 @@ import { NavbarBottom } from "../components/NavbarBottom";
 import { stylesRegularFont } from "../../styles/regularFont";
 import { stylesContainer } from "../../styles/container";
 
-export const SupportTicket = (props) => {
+export const SupportTicket = (props, buttonVisibility) => {
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1 }]}>
-      <Navbar title={props.title} />
+      <Navbar title={props.title} buttonVisibility={buttonVisibility} />
       <View style={[stylesContainer.container, { flex: 1 }]}>
         <Logo showTexterra={false} />
         <View style={styles.supportInput}>

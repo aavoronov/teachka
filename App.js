@@ -75,13 +75,14 @@ export default function App() {
 
   if (!loaded) {
     return <Preloader />;
+    // return null;
   }
-  return <Authorization title={"Вход в систему"} buttonText={"Вход"} />;
-  // return <PasswordRecovery1 title={"Восстановление пароля"} buttonText={"Дальше"} />;
-  // return <PasswordRecovery2 title={"Восстановление пароля"} buttonText={"Дальше"} contact={"----это проп----"} />;
-  // return <PasswordRecovery3 title={"Восстановление пароля"} buttonText={"Дальше"} />;
-  // return <SupportTicket title={"Заявка в поддержку"} buttonText={"Отправить"} />;
-  // return <RateUs buttonText={"Оценить"} />;
-  // return <ProgressCustom />;
-  // return <Preloader />;
+  // return <Authorization title={"Вход в систему"} buttonText={"Вход"} buttonVisibility={false} />;
+  // return <PasswordRecovery1 title={"Восстановление пароля"} buttonText={"Дальше"} buttonVisibility={false} />;
+  // return <PasswordRecovery2 title={"Восстановление пароля"} buttonText={"Дальше"} contact={"----это проп----"} buttonVisibility={false} />;
+  // return <PasswordRecovery3 title={"Восстановление пароля"} buttonText={"Дальше"} buttonVisibility={false} />;
+  return <SupportTicket title={"Заявка в поддержку"} buttonText={"Отправить"} buttonVisibility={true} />;
+  // return <RateUs buttonText={"Оценить"} buttonVisibility={false} />;
+  // return <ProgressCustom  />;
+  // return <Preloader buttonVisibility={false} />;
 }
