@@ -1,13 +1,5 @@
 import React, { useState } from "react";
-import {
-  View,
-  TextInput,
-  KeyboardAvoidingView,
-  Text,
-  TouchableOpacity,
-  Image,
-  StyleSheet,
-} from "react-native";
+import { View, TextInput, KeyboardAvoidingView, Text, TouchableOpacity, Image, StyleSheet } from "react-native";
 import { Navbar } from "../components/Navbar";
 import { Logo } from "../components/Logo";
 import { ButtonCustom } from "../components/ButtonCustom";
@@ -19,7 +11,9 @@ import { stylesContainer } from "../../styles/container";
 
 export const PasswordRecovery3 = (props) => {
   const [secure, setSecure] = useState(props.secure);
-
+  const gotoAuth = () => {
+    navigation.popToTop();
+  };
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1 }]}>
       <Navbar title='Восстановление пароля' />
@@ -27,9 +21,8 @@ export const PasswordRecovery3 = (props) => {
         <Logo showTexterra={false} />
         <Text style={{ paddingBottom: 25 }}>Задайте новый пароль</Text>
         <PassRecoveryFieldset secure={true} />
-        <KeyboardAvoidingView
-          style={{ marginTop: "auto", justifyContent: "flex-end" }}>
-          <ButtonCustom buttonText={props.buttonText} />
+        <KeyboardAvoidingView style={{ marginTop: "auto", justifyContent: "flex-end" }}>
+          <ButtonCustom buttonText={props.buttonText} onPress={gotoAuth} />
           <AbortPasswordRecoveryButton />
         </KeyboardAvoidingView>
       </View>

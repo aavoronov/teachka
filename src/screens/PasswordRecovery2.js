@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigation } from "@react-navigation/native";
+
 import { View, TextInput, KeyboardAvoidingView, Text } from "react-native";
 import { Navbar } from "../components/Navbar";
 import { Logo } from "../components/Logo";
@@ -9,6 +11,11 @@ import { stylesRegularFont } from "../../styles/regularFont";
 import { stylesContainer } from "../../styles/container";
 
 export const PasswordRecovery2 = (props) => {
+  const navigation = useNavigation();
+  const gotoRec3 = () => {
+    navigation.navigate("Восстановление пароля3");
+  };
+
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1 }]}>
       <Navbar title='Восстановление пароля' />
@@ -24,7 +31,7 @@ export const PasswordRecovery2 = (props) => {
           keyboardType='numeric'
         />
         <KeyboardAvoidingView style={{ marginTop: "auto", justifyContent: "flex-end" }}>
-          <ButtonCustom buttonText={props.buttonText} />
+          <ButtonCustom buttonText={props.buttonText} onClick={gotoRec3} />
           <AbortPasswordRecoveryButton />
         </KeyboardAvoidingView>
       </View>

@@ -1,19 +1,14 @@
 import React from "react";
-import {
-  TouchableOpacity,
-  StyleSheet,
-  Text,
-  View,
-  Keyboard,
-  Platform,
-} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { TouchableOpacity, StyleSheet, Text, View, Keyboard, Platform } from "react-native";
 
-export const ButtonCustom = (props) => {
+export const ButtonCustom = ({ onClick, ...props }) => {
+  const navigation = useNavigation();
   return (
     <View style={{ marginTop: 20 }}>
       <TouchableOpacity
         behavior={Platform.OS == "ios" ? "padding" : "height"}
-        onPress={() => Keyboard.dismiss}
+        onPress={onClick}
         style={[styles.button, styles.buttonGreen]}>
         <Text style={styles.buttonText}>{props.buttonText}</Text>
       </TouchableOpacity>

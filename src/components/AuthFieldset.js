@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, Alert } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 export const AuthFieldset = (props) => {
   const [secure, setSecure] = useState(props.secure);
+  const navigation = useNavigation();
 
   return (
     <View>
@@ -54,7 +56,8 @@ export const AuthFieldset = (props) => {
       </View>
       <TouchableOpacity
         onPress={() => {
-          Alert.alert("Забыл пароль? Соболезную");
+          navigation.navigate("Восстановление пароля1");
+          //Alert.alert("Забыл пароль? Соболезную");
         }}>
         <Text style={styles.forgotPassword}>Забыли пароль?</Text>
       </TouchableOpacity>

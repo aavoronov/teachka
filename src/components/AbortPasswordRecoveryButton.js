@@ -1,19 +1,14 @@
 import React from "react";
-import {
-  View,
-  StyleSheet,
-  TouchableOpacity,
-  Text,
-  Alert,
-  Platform,
-} from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import { View, StyleSheet, TouchableOpacity, Text, Alert, Platform } from "react-native";
 
 export const AbortPasswordRecoveryButton = () => {
+  const navigation = useNavigation();
   return (
     <View style={{ marginTop: 20 }}>
       <TouchableOpacity
         behavior={Platform.OS == "ios" ? "padding" : "height"}
-        onPress={() => Alert.alert("к авторизации")}
+        onPress={() => navigation.popToTop()}
         style={[styles.button]}>
         <Text style={styles.buttonText}>Вход</Text>
       </TouchableOpacity>

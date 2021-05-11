@@ -1,3 +1,6 @@
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 //import { StatusBar } from 'expo-status-bar';
 import React, { useState } from "react";
 import { StyleSheet, TouchableOpacity, Platform } from "react-native";
@@ -12,6 +15,24 @@ import { RateUs } from "./src/screens/RateUs";
 import AppLoading from "expo";
 import { ProgressCustom } from "./src/components/ProgressCustom_copy";
 import { Preloader } from "./src/screens/Preloader";
+
+function HomeScreen({ navigation }) {
+  return <Authorization title={"Вход в систему"} buttonText={"Вход"} buttonVisibility={false} />;
+}
+
+function PassRec1({ navigation }) {
+  return <PasswordRecovery1 title={"Восстановление пароля"} buttonText={"Дальше"} buttonVisibility={false} />;
+}
+
+function PassRec2({ navigation }) {
+  return <PasswordRecovery2 title={"Восстановление пароля"} buttonText={"Дальше"} contact={"----это проп----"} buttonVisibility={false} />;
+}
+
+function PassRec3({ navigation }) {
+  return <PasswordRecovery3 title={"Восстановление пароля"} buttonText={"Дальше"} buttonVisibility={false} />;
+}
+
+const Stack = createStackNavigator();
 
 export default function App() {
   let customFonts = {
@@ -30,59 +51,28 @@ export default function App() {
   // }
   // const [isReady, setIsready] = useState(false);
 
-  // const [pageId, setPageId] = useState(1);
+  return !loaded ? (
+    <Preloader />
+  ) : (
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName='Вход в систему'
+        screenOptions={{
+          headerTitleAlign: "center",
+          headerBackTitle: "",
+          cardStyle: { backgroundColor: "#fff" },
 
-  // {
-  //   switch (pageId) {
-  //     case 1:
-  //       return (
-  //         <TouchableOpacity
-  //           onPress={() => {
-  //             setPageId(pageId++);
-  //           }}>
-  //           <Authorization />
-  //         </TouchableOpacity>
-  //       );
-  //     case 2:
-  //       return (
-  //         <TouchableOpacity
-  //           onPress={() => {
-  //             setPageId(pageId++);
-  //           }}>
-  //           <PasswordRecovery1 />
-  //         </TouchableOpacity>
-  //       );
-  //     case 3:
-  //       return (
-  //         <TouchableOpacity
-  //           onPress={() => {
-  //             setPageId(pageId++);
-  //           }}>
-  //           <PasswordRecovery2 />
-  //         </TouchableOpacity>
-  //       );
-  //     case 4:
-  //       return (
-  //         <TouchableOpacity
-  //           onLongPress={() => {
-  //             setPageId(pageId++);
-  //           }}>
-  //           <PasswordRecovery3 />
-  //         </TouchableOpacity>
-  //       );
-  //   }
-  // }
-
-  if (!loaded) {
-    return <Preloader />;
-    // return null;
-  }
-  // return <Authorization title={"Вход в систему"} buttonText={"Вход"} buttonVisibility={false} />;
-  // return <PasswordRecovery1 title={"Восстановление пароля"} buttonText={"Дальше"} buttonVisibility={false} />;
-  // return <PasswordRecovery2 title={"Восстановление пароля"} buttonText={"Дальше"} contact={"----это проп----"} buttonVisibility={false} />;
-  // return <PasswordRecovery3 title={"Восстановление пароля"} buttonText={"Дальше"} buttonVisibility={false} />;
-  return <SupportTicket title={"Заявка в поддержку"} buttonText={"Отправить"} buttonVisibility={true} />;
-  // return <RateUs buttonText={"Оценить"} buttonVisibility={false} />;
-  // return <ProgressCustom  />;
-  // return <Preloader buttonVisibility={false} />;
+          headerTintColor: "#10112A",
+          headerTitleStyle: {},
+        }}>
+        <Stack.Screen name='Вход в систему' component={HomeScreen} />
+        <Stack.Screen name='Восстановление пароля1' component={PassRec1} />
+        <Stack.Screen name='Восстановление пароля2' component={PassRec2} />
+        <Stack.Screen name='Восстановление пароля3' component={PassRec3} />
+      </Stack.Navigator>
+      {/* <RateUs buttonText={"Оценить"} buttonVisibility={false} />
+       <ProgressCustom />
+       <Preloader buttonVisibility={false} /> */}
+    </NavigationContainer>
+  );
 }
