@@ -9,7 +9,7 @@ export const ButtonCustom = ({ onClick, ...props }) => {
       <TouchableOpacity
         behavior={Platform.OS == "ios" ? "padding" : "height"}
         onPress={onClick}
-        style={[styles.button, styles.buttonGreen]}>
+        style={[styles.button, styles.buttonGreen, { ...props.style }]}>
         <Text style={styles.buttonText}>{props.buttonText}</Text>
       </TouchableOpacity>
     </View>
