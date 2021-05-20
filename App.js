@@ -11,13 +11,10 @@ import { PasswordRecovery1 } from "./src/screens/PasswordRecovery1";
 import { PasswordRecovery2 } from "./src/screens/PasswordRecovery2";
 import { PasswordRecovery3 } from "./src/screens/PasswordRecovery3";
 import { SupportTicket } from "./src/screens/SupportTicket";
-import { Preloader } from "./src/screens/Preloader";
+//import { Preloader } from "./src/screens/Preloader";
 import { Courses } from "./src/screens/Courses";
 import { CourseInner } from "./src/screens/CourseInner";
-
-function HomeScreen({ navigation }) {
-  return <Authorization buttonText={"Вход"} />;
-}
+import { Certificate } from "./src/screens/Certificate";
 
 function PassRec1({ navigation }) {
   return <PasswordRecovery1 buttonText={"Дальше"} />;
@@ -31,10 +28,6 @@ function PassRec3({ navigation }) {
   return <PasswordRecovery3 buttonText={"Дальше"} />;
 }
 
-function MyCourses({ navigation }) {
-  return <Courses complete={10} />;
-}
-
 function Support({ navigation }) {
   return <SupportTicket buttonText={"Отправить"} />;
 }
@@ -43,7 +36,7 @@ function Course({ navigation }) {
   return (
     <CourseInner
       buttonText={"Показать сертификат"}
-      complete={10}
+      complete={14}
       overall={14}
       description={`<p>Нам интересно не только получать новые знания, но и делиться наработанным опытом с коллегами, поэтому в «Текстерре» на регулярной основе проводятся <strong>«обучалки»</strong>, на которых каждый желающий может выступить с докладом на любую профессиональную тему.</p>
       <p>Ко всему прочему с сентября 2018 года мы запустили собственные онлайн-курсы и основали <a target="_blank" href="https://teachline.ru/">учебный центр TeachLine</a>. В ноябре 2018 началось обучение второго потока курсов «<a target="_blank" href="https://teachline.ru/courses/internet-marketolog/">Интернет-маркетолог</a>» и «<a target="_blank" href="https://teachline.ru/courses/blog-courses/">Контент-маркетолог</a>». С начала 2019 года запустили курсы «<a target="_blank" href="https://teachline.ru/courses/smm/">SMM-специалист</a>», «<a target="_blank" href="https://teachline.ru/courses/commercial-author/">Коммерческий автор</a>» и многие другие. </p>
@@ -69,6 +62,20 @@ function Course({ navigation }) {
   );
 }
 
+function _Certificate({ navigation }) {
+  return (
+    <Certificate
+      type={"Диплом с отличием"}
+      firstName={"Иван"}
+      lastName={"Иванов"}
+      sex={"m"}
+      date={"19.05.2021"}
+      course={"Продвижение в очереди в поликлинике"}
+      duration={14}
+    />
+  );
+}
+
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -82,16 +89,22 @@ export default function App() {
   };
 
   const [loaded, error] = useFonts(customFonts);
+  const [isSignedIn, setIsSignedIn] = useState(false);
+
+  function HomeScreen({ navigation }) {
+    return <Authorization buttonText={"Вход"} signInHandler={setIsSignedIn} />;
+  }
+
+  function MyCourses({ navigation }) {
+    return <Courses signInHandler={setIsSignedIn} />;
+  }
 
   // async function loadApp() {
   //   await Font.loadAsync(customFonts);
   // }
   // const [isReady, setIsready] = useState(false);
 
-  const isSignedIn = true;
-  return !loaded ? (
-    <Preloader />
-  ) : (
+  return !loaded ? null : (
     <NavigationContainer>
       <Stack.Navigator
         initialRouteName='Вход в систему'
@@ -108,6 +121,7 @@ export default function App() {
             <Stack.Screen name='Мои курсы' component={MyCourses} />
             <Stack.Screen name='Заявка в поддержку' component={Support} />
             <Stack.Screen name='курс будет' component={Course} />
+            <Stack.Screen name='Сертификат' component={_Certificate} />
           </>
         ) : (
           <>

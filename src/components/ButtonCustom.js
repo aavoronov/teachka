@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
-import { TouchableOpacity, StyleSheet, Text, View, Keyboard, Platform } from "react-native";
+import { TouchableOpacity, StyleSheet, Text, View, Platform } from "react-native";
 
 export const ButtonCustom = ({ onClick, ...props }) => {
   const navigation = useNavigation();

@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 
-export const NavbarBottom = (props) => {
+export const NavbarBottom = (props, { onClick }) => {
   const navigation = useNavigation();
   return (
     <View style={styles.navbarBottom}>
@@ -22,6 +22,10 @@ export const NavbarBottom = (props) => {
         <Image source={require("../../assets/img/repairing-service.png")} style={{ width: 35, height: 35 }} />
         <Text>Service</Text>
       </TouchableOpacity>
+      {/* <TouchableOpacity onPress={() => onClick} style={styles.buttonContainer}>
+        <Image source={require("../../assets/img/repairing-service.png")} style={{ width: 35, height: 35 }} />
+        <Text>Выход</Text>
+      </TouchableOpacity> */}
     </View>
   );
 };

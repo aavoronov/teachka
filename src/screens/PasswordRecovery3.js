@@ -7,20 +7,22 @@ import { PassRecoveryFieldset } from "../components/PassRecoveryFieldset";
 import { stylesField } from "../../styles/field";
 import { stylesRegularFont } from "../../styles/regularFont";
 import { stylesContainer } from "../../styles/container";
+import { useNavigation } from "@react-navigation/native";
 
 export const PasswordRecovery3 = (props) => {
-  const [secure, setSecure] = useState(props.secure);
+  const navigation = useNavigation();
+  // const [secure, setSecure] = useState(props.secure);
   const gotoAuth = () => {
     navigation.popToTop();
   };
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1 }]}>
       <View style={[stylesContainer.container, { flex: 1 }]}>
-        <Logo showTexterra={false} />
+        <Logo />
         <Text style={{ paddingBottom: 25 }}>Задайте новый пароль</Text>
         <PassRecoveryFieldset secure={true} />
         <KeyboardAvoidingView style={{ marginTop: "auto", justifyContent: "flex-end" }}>
-          <ButtonCustom buttonText={props.buttonText} onPress={gotoAuth} />
+          <ButtonCustom buttonText={props.buttonText} onClick={gotoAuth} />
           <AbortPasswordRecoveryButton />
         </KeyboardAvoidingView>
       </View>

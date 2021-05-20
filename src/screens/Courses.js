@@ -7,7 +7,7 @@ import { CourseCard } from "../components/CourseCard";
 import { FlatList } from "react-native-gesture-handler";
 import { stylesContainer } from "../../styles/containerContentful";
 
-export const Courses = (props) => {
+export const Courses = ({ signInHandler }) => {
   const courses = [
     {
       id: 131,
@@ -75,6 +75,10 @@ export const Courses = (props) => {
   //     bookmarked: 2,
   //   };
 
+  const signOut = () => {
+    signInHandler(true);
+  };
+
   return (
     <View style={{ flex: 1 }}>
       <View style={[stylesContainer.container, { flex: 1 }]}>
@@ -97,9 +101,8 @@ export const Courses = (props) => {
         />
         {/* <ButtonCustom buttonText="Приобрести курсы"/> */}
       </View>
-      <NavbarBottom />
+      <NavbarBottom onClick={signOut} />
     </View>
-    // <CourseCard uri={item.uri} title={item.title} complete={item.complete} overall={item.overall} bookmarked={item.bookmarked} />
   );
 };
 

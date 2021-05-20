@@ -11,7 +11,7 @@ export const RateUs = (props) => {
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1, marginTop: 85 }]}>
       <View style={[stylesContainer.container, { flex: 1 }]}>
-        <Logo showTexterra={false} />
+        <Logo />
         <View style={styles.rateContainer}>
           <Image source={require("../../assets/img/stars.png")} style={{ height: 48, width: 270 }} />
           <Text style={{ paddingVertical: 10, lineHeight: 22, fontSize: 17, fontFamily: "SF-Display-Semibold" }}>Оцените нас</Text>

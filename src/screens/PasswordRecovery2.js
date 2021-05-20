@@ -18,7 +18,7 @@ export const PasswordRecovery2 = (props) => {
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1 }]}>
       <View style={[stylesContainer.container, { flex: 1 }]}>
-        <Logo showTexterra={false} />
+        <Logo />
         <Text style={{ paddingBottom: 25 }}>Введите код подтверждения, который был отправлен вам на {props.contact}</Text>
         <TextInput
           style={stylesField.field}

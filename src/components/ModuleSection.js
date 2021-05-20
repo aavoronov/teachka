@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
-import Accordion from "react-native-collapsible/Accordion";
+//import Accordion from "react-native-collapsible/Accordion";
 import { THEME } from "../theme";
 import { DisplayReg } from "../components/ui/DisplayReg";
 import { DisplaySemi } from "../components/ui/DisplaySemi";
@@ -8,7 +8,7 @@ import { DisplaySemi } from "../components/ui/DisplaySemi";
 const modules = [
   {
     id: 123123,
-    title: "Модуль 1. Длинное название, возможно, даже слишком",
+    title: "Модуль 1",
     complete: 10,
     overall: 14,
     bookmarked: 0,
@@ -106,65 +106,62 @@ const modules = [
 ];
 
 export const ModuleSection = (props) => {
-  // const [activeSections, setActiveSections] = useState([]);
+  const [activeSections, setActiveSections] = useState([]);
   const [upsideDown, setUpsideDown] = useState(false);
-};
 
-export const _renderHeader = (section) => {
-  return (
-    <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingVertical: 20 }}>
-      <DisplaySemi style={{ width: "60%", fontSize: 17 }}>{section.title}</DisplaySemi>
+  const _renderHeader = (section) => {
+    return (
+      <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between", paddingVertical: 20 }}>
+        <DisplaySemi style={{ width: "50%", fontSize: 17 }}>{section.title}</DisplaySemi>
 
-      <View style={{ flexDirection: "row", alignItems: "center" }}>
-        <DisplayReg style={({ fontSize: 14, color: THEME.PURPLE }, section.bookmarked ? { opacity: 1 } : { opacity: 0 })}>
-          {`${section.bookmarked} `}
-        </DisplayReg>
+        <View style={{ flexDirection: "row", alignItems: "center" }}>
+          <DisplayReg style={({ fontSize: 14, color: THEME.PURPLE }, section.bookmarked ? { opacity: 1 } : { opacity: 0 })}>
+            {`${section.bookmarked} `}
+          </DisplayReg>
+          <Image
+            source={require("../../assets/img/bookmarked-icon.png")}
+            style={[{ width: 9, height: 11 }, section.bookmarked ? { opacity: 1 } : { opacity: 0 }]}
+          />
+        </View>
+
+        <DisplayReg
+          style={
+            section.complete == section.overall ? styles.textGreen : styles.textGrey
+          }>{`${section.complete}/${section.overall}`}</DisplayReg>
         <Image
-          source={require("../../assets/img/bookmarked-icon.png")}
-          style={[{ width: 9, height: 11 }, section.bookmarked ? { opacity: 1 } : { opacity: 0 }]}
+          style={[styles.textinputIcon, upsideDown ? { transform: [{ scaleY: -1 }] } : { transform: [{ scaleY: 1 }] }]}
+          source={require("../../assets/img/expandable-icon.png")}
+          fadeDuration={0}
+          style={{ width: 20, height: 20 }}
         />
       </View>
+    );
+  };
 
-      <DisplayReg style={section.complete == section.overall ? styles.textGreen : styles.textGrey}>
-        {`${section.complete}/${section.overall}`}
-      </DisplayReg>
-      <Image
-        style={[styles.textinputIcon, upsideDown ? { transform: [{ scaleY: -1 }] } : { transform: [{ scaleY: 1 }] }]}
-        source={require("../../assets/img/expandable-icon.png")}
-        fadeDuration={0}
-        style={{ width: 20, height: 20 }}
-      />
-    </View>
-  );
-};
+  const _renderContent = (section) => {
+    return (
+      <View>
+        <Text>hey</Text>
+      </View>
+    );
+  };
 
-export const _renderContent = (section) => {
   return (
-    <View>
-      <Text>{section.content.title}</Text>
-      <Text>{section.content.id}</Text>
-    </View>
+    <Accordion
+      sections={modules}
+      activeSections={activeSections}
+      // renderSectionTitle={some function}
+      renderHeader={_renderHeader}
+      renderContent={_renderContent}
+      onChange={() => {
+        setActiveSections;
+        setUpsideDown(!upsideDown);
+      }}
+      keyExtractor={(module) => module.id.toString()}
+      expandMultiple={true}
+    />
   );
 };
-
-//   return (
-//     <Accordion
-//       sections={modules}
-//       underlayColor='#ffdddd'
-//       activeSections={activeSections}
-//       // renderSectionTitle={some function}
-//       renderHeader={_renderHeader}
-//       renderContent={_renderContent}
-//       onChange={() => {
-//         (section) => activeSections.push.section.id.toString();
-//         // setActiveSections((section) => section.id.toString());
-//         setUpsideDown(!upsideDown);
-//       }}
-//       // keyExtractor={(module) => module.id.toString()}
-//       expandMultiple={true}
-//     />
-//   );
-// };
 
 // const SECTIONS = [
 //     {
@@ -207,11 +204,9 @@ export const _renderContent = (section) => {
 const styles = StyleSheet.create({
   textGreen: {
     color: THEME.MAIN_GREEN,
-    fontSize: 17,
   },
   textGrey: {
     color: "#6F707A",
-    fontSize: 17,
   },
   textPurple: {
     color: THEME.PURPLE,

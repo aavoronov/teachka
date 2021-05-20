@@ -10,7 +10,7 @@ export const SupportTicket = (props) => {
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1 }]}>
       <View style={[stylesContainer.container, { flex: 1 }]}>
-        <Logo showTexterra={false} />
+        <Logo />
         <View style={styles.supportInput}>
           <TextInput placeholder='Опишите свои вопросы, замечания или предложения...' placeholderTextColor='#6F707A' multiline={true} />
         </View>

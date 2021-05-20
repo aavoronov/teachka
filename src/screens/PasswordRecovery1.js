@@ -18,7 +18,7 @@ export const PasswordRecovery1 = (props) => {
   return (
     <View style={[stylesRegularFont.regularFont, { flex: 1 }]}>
       <View style={[stylesContainer.container, { flex: 1 }]}>
-        <Logo showTexterra={false} />
+        <Logo />
         <TextInput
           style={stylesField.field}
           placeholder='E-mail или номер телефона'
