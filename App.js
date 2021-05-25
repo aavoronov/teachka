@@ -32,7 +32,8 @@ function Support({ navigation }) {
   return <SupportTicket buttonText={"Отправить"} />;
 }
 
-function Course({ navigation }) {
+function Course({ route, navigation }) {
+  const { title } = route.params;
   return (
     <CourseInner
       buttonText={"Показать сертификат"}
@@ -120,7 +121,7 @@ export default function App() {
           <>
             <Stack.Screen name='Мои курсы' component={MyCourses} />
             <Stack.Screen name='Заявка в поддержку' component={Support} />
-            <Stack.Screen name='курс будет' component={Course} />
+            <Stack.Screen name='курс будет' component={Course} options={({ route }) => ({ title: route.params.title })} />
             <Stack.Screen name='Сертификат' component={_Certificate} />
           </>
         ) : (

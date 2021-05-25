@@ -5,6 +5,7 @@ import { THEME } from "../theme";
 import { DisplayReg } from "../components/ui/DisplayReg";
 
 export const CourseCard = (props) => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -14,7 +15,7 @@ export const CourseCard = (props) => {
         marginHorizontal: 6,
         ...props.style,
       }}>
-      <TouchableOpacity>
+      <TouchableOpacity onPress={() => navigation.navigate("курс будет", { title: props.title })}>
         <View style={{ justifyContent: "space-between" }}>
           <View style={{ borderRadius: 15, overflow: "hidden" }}>
             <Image source={props.uri} style={{ height: 114, width: null, resizeMode: "contain" }} />
