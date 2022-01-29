@@ -3,17 +3,20 @@ import { StyleSheet, Text, TextInput, View, Image, TouchableOpacity, Alert } fro
 import { useNavigation } from "@react-navigation/native";
 
 export const AuthFieldset = (props) => {
-  const [secure, setSecure] = useState(props.secure);
+  const [secure, setSecure] = useState(true);
   const navigation = useNavigation();
 
   return (
     <View>
       <TextInput
+        maxLength={30}
         style={styles.field}
-        placeholder='E-mail или номер телефона'
+        placeholder='Логин'
         placeholderTextColor='#6F707A'
         autoCorrect={false}
         autoCapitalize='none'
+        returnKeyType='go'
+        onChangeText={props.setLogin}
       />
       <View
         style={{
@@ -26,12 +29,15 @@ export const AuthFieldset = (props) => {
         }}>
         <TextInput
           style={[styles.field, styles.lastField]}
-          placeholder='Введите пароль'
+          placeholder='Пароль'
           placeholderTextColor='#6F707A'
           secureTextEntry={secure}
           autoCorrect={false}
           autoCapitalize='none'
+          returnKeyType={props.isSignUp ? "go" : "done"}
+          onChangeText={props.setPassword}
         />
+
         <TouchableOpacity
           title=''
           onPress={() => {
@@ -54,13 +60,37 @@ export const AuthFieldset = (props) => {
           )}
         </TouchableOpacity>
       </View>
-      <TouchableOpacity
-        onPress={() => {
-          navigation.navigate("Восстановление пароля1");
-          //Alert.alert("Забыл пароль? Соболезную");
-        }}>
-        <Text style={styles.forgotPassword}>Забыли пароль?</Text>
-      </TouchableOpacity>
+      {props.isSignUp ? (
+        <View
+          style={{
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            backgroundColor: "#F1F4F7",
+            borderRadius: 10,
+            paddingRight: 20,
+            marginTop: 20,
+          }}>
+          <TextInput
+            style={[styles.field, styles.lastField]}
+            placeholder='Повторите пароль'
+            placeholderTextColor='#6F707A'
+            secureTextEntry={secure}
+            autoCorrect={false}
+            autoCapitalize='none'
+            onChangeText={props.setPasswordRepeat}
+          />
+        </View>
+      ) : null}
+      {props.isSignUp ? (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Восстановление пароля1");
+            //Alert.alert("Забыл пароль? Соболезную");
+          }}>
+          {!props.isSignUp ? <Text style={styles.forgotPassword}>Забыли пароль?</Text> : null}
+        </TouchableOpacity>
+      ) : null}
     </View>
   );
 };

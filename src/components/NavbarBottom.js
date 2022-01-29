@@ -22,10 +22,10 @@ export const NavbarBottom = (props, { onClick }) => {
         <Image source={require("../../assets/img/repairing-service.png")} style={{ width: 35, height: 35 }} />
         <Text>Service</Text>
       </TouchableOpacity>
-      {/* <TouchableOpacity onPress={() => onClick} style={styles.buttonContainer}>
+      <TouchableOpacity onPress={() => onClick} style={styles.buttonContainer}>
         <Image source={require("../../assets/img/repairing-service.png")} style={{ width: 35, height: 35 }} />
         <Text>Выход</Text>
-      </TouchableOpacity> */}
+      </TouchableOpacity>
     </View>
   );
 };

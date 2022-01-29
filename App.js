@@ -7,14 +7,16 @@ import React, { useState } from "react";
 //import * as Font from "expo-font";
 import { useFonts } from "expo-font";
 import { Authorization } from "./src/screens/Authorization";
+import { SignUp } from "./src/screens/SignUp";
 import { PasswordRecovery1 } from "./src/screens/PasswordRecovery1";
 import { PasswordRecovery2 } from "./src/screens/PasswordRecovery2";
 import { PasswordRecovery3 } from "./src/screens/PasswordRecovery3";
 import { SupportTicket } from "./src/screens/SupportTicket";
-//import { Preloader } from "./src/screens/Preloader";
+// import { Preloader } from "./src/screens/Preloader";
 import { Courses } from "./src/screens/Courses";
 import { CourseInner } from "./src/screens/CourseInner";
 import { Certificate } from "./src/screens/Certificate";
+// import { RateUs } from "./src/screens/RateUs";
 
 function PassRec1({ navigation }) {
   return <PasswordRecovery1 buttonText={"Дальше"} />;
@@ -28,6 +30,10 @@ function PassRec3({ navigation }) {
   return <PasswordRecovery3 buttonText={"Дальше"} />;
 }
 
+function _SignUp({ navigation }) {
+  return <SignUp />;
+}
+
 function Support({ navigation }) {
   return <SupportTicket buttonText={"Отправить"} />;
 }
@@ -37,7 +43,7 @@ function Course({ route, navigation }) {
   return (
     <CourseInner
       buttonText={"Показать сертификат"}
-      complete={14}
+      complete={12}
       overall={14}
       description={`<p>Нам интересно не только получать новые знания, но и делиться наработанным опытом с коллегами, поэтому в «Текстерре» на регулярной основе проводятся <strong>«обучалки»</strong>, на которых каждый желающий может выступить с докладом на любую профессиональную тему.</p>
       <p>Ко всему прочему с сентября 2018 года мы запустили собственные онлайн-курсы и основали <a target="_blank" href="https://teachline.ru/">учебный центр TeachLine</a>. В ноябре 2018 началось обучение второго потока курсов «<a target="_blank" href="https://teachline.ru/courses/internet-marketolog/">Интернет-маркетолог</a>» и «<a target="_blank" href="https://teachline.ru/courses/blog-courses/">Контент-маркетолог</a>». С начала 2019 года запустили курсы «<a target="_blank" href="https://teachline.ru/courses/smm/">SMM-специалист</a>», «<a target="_blank" href="https://teachline.ru/courses/commercial-author/">Коммерческий автор</a>» и многие другие. </p>
@@ -93,7 +99,7 @@ export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
 
   function HomeScreen({ navigation }) {
-    return <Authorization buttonText={"Вход"} signInHandler={setIsSignedIn} />;
+    return <Authorization signInHandler={setIsSignedIn} />;
   }
 
   function MyCourses({ navigation }) {
@@ -127,9 +133,10 @@ export default function App() {
         ) : (
           <>
             <Stack.Screen name='Вход в систему' component={HomeScreen} />
-            <Stack.Screen name='Восстановление пароля1' component={PassRec1} />
-            <Stack.Screen name='Восстановление пароля2' component={PassRec2} />
-            <Stack.Screen name='Восстановление пароля3' component={PassRec3} />
+            <Stack.Screen name='Восстановление пароля 1/3' component={PassRec1} />
+            <Stack.Screen name='Восстановление пароля 2/3' component={PassRec2} />
+            <Stack.Screen name='Восстановление пароля 3/3' component={PassRec3} />
+            <Stack.Screen name='Регистрация' component={_SignUp} />
           </>
         )}
       </Stack.Navigator>

@@ -18,7 +18,7 @@ export const CourseCard = (props) => {
       <TouchableOpacity onPress={() => navigation.navigate("курс будет", { title: props.title })}>
         <View style={{ justifyContent: "space-between" }}>
           <View style={{ borderRadius: 15, overflow: "hidden" }}>
-            <Image source={props.uri} style={{ height: 114, width: null, resizeMode: "contain" }} />
+            <Image source={{ uri: props.uri }} style={{ height: 114, width: null, resizeMode: "contain" }} />
           </View>
           <DisplayReg style={{ fontSize: 14, lineHeight: 17 }}>{props.title}</DisplayReg>
         </View>
@@ -29,12 +29,12 @@ export const CourseCard = (props) => {
             style={props.complete == props.overall ? styles.textGreen : styles.textGrey}>{`${props.complete}/${props.overall}`}</DisplayReg>
           <DisplayReg style={{ ...styles.textGrey, fontSize: 10 }}>пройдено</DisplayReg>
         </View>
-        {props.bookmarked ? (
+        {/* {props.bookmarked ? (
           <View style={{ flexDirection: "row", alignItems: "center" }}>
             <DisplayReg style={{ fontSize: 14, color: THEME.PURPLE }}>{props.bookmarked} </DisplayReg>
             <Image source={require("../../assets/img/bookmarked-icon.png")} style={{ width: 9, height: 11 }} />
           </View>
-        ) : null}
+        ) : null} */}
       </View>
     </View>
   );

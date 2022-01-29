@@ -11,7 +11,7 @@ export const Courses = ({ signInHandler }) => {
   const courses = [
     {
       id: 131,
-      uri: require("../../assets/img/course-pic.png"),
+      uri: "https://avatars.mds.yandex.net/i?id=3b004359907e9fc7e6a98786d455bbc4-4120605-images-thumbs&n=13",
       title: "Продвижение в вайбере",
       complete: 12,
       overall: 14,
@@ -19,7 +19,7 @@ export const Courses = ({ signInHandler }) => {
     },
     {
       id: 132,
-      uri: require("../../assets/img/course-pic.png"),
+      uri: "https://avatars.mds.yandex.net/i?id=3b004359907e9fc7e6a98786d455bbc4-4120605-images-thumbs&n=13",
       title: "Продвижение в ответах мэил.ру",
       complete: 15,
       overall: 15,
@@ -27,7 +27,7 @@ export const Courses = ({ signInHandler }) => {
     },
     {
       id: 13112,
-      uri: require("../../assets/img/course-pic.png"),
+      uri: "https://avatars.mds.yandex.net/i?id=3b004359907e9fc7e6a98786d455bbc4-4120605-images-thumbs&n=13",
       title: "Продвижение в гитхабе",
       complete: 12,
       overall: 14,
@@ -35,7 +35,7 @@ export const Courses = ({ signInHandler }) => {
     },
     {
       id: 13231,
-      uri: require("../../assets/img/course-pic.png"),
+      uri: "https://avatars.mds.yandex.net/i?id=3b004359907e9fc7e6a98786d455bbc4-4120605-images-thumbs&n=13",
       title: "Продвижение на реддите",
       complete: 15,
       overall: 15,
@@ -43,7 +43,7 @@ export const Courses = ({ signInHandler }) => {
     },
     {
       id: 13231,
-      uri: require("../../assets/img/course-pic.png"),
+      uri: "https://avatars.mds.yandex.net/i?id=3b004359907e9fc7e6a98786d455bbc4-4120605-images-thumbs&n=13",
       title: "Продвижение почтовыми голубями",
       complete: 15,
       overall: 15,
@@ -51,7 +51,7 @@ export const Courses = ({ signInHandler }) => {
     },
     {
       id: 13231,
-      uri: require("../../assets/img/course-pic.png"),
+      uri: "https://avatars.mds.yandex.net/i?id=3b004359907e9fc7e6a98786d455bbc4-4120605-images-thumbs&n=13",
       title: "Продвижение по телеграфу",
       complete: 15,
       overall: 15,
@@ -59,7 +59,7 @@ export const Courses = ({ signInHandler }) => {
     },
     {
       id: 13231,
-      uri: require("../../assets/img/course-pic.png"),
+      uri: "https://avatars.mds.yandex.net/i?id=3b004359907e9fc7e6a98786d455bbc4-4120605-images-thumbs&n=13",
       title: "Продвижение в очереди в поликлинике",
       complete: 15,
       overall: 15,
@@ -76,7 +76,8 @@ export const Courses = ({ signInHandler }) => {
   //   };
 
   const signOut = () => {
-    signInHandler(true);
+    signInHandler(false);
+    navigation.navigate("Вход в систему");
   };
 
   return (
@@ -101,7 +102,7 @@ export const Courses = ({ signInHandler }) => {
         />
         {/* <ButtonCustom buttonText="Приобрести курсы"/> */}
       </View>
-      <NavbarBottom onClick={signOut} />
+      <NavbarBottom onClick={() => signOut()} />
     </View>
   );
 };

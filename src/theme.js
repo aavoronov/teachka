@@ -7,6 +7,7 @@ export const THEME = {
   MAIN_GREEN: "#A2C81F",
   PURPLE: "#681785",
   NAVBAR_TITLE_LINE_LENGTH: 28,
+  API_URL: "http://192.168.1.50:5000",
   // screenWidth: useWindowDimensions().width,
   // screenHeight: useWindowDimensions().height,
 };
