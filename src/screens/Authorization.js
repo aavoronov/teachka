@@ -1,21 +1,21 @@
-import { AuthFieldset } from "../components/AuthFieldset";
-import { Logo } from "../components/Logo";
-import { ButtonCustom } from "../components/ButtonCustom";
-import { Agreement } from "../components/Agreement";
-
-import { stylesRegularFont } from "../../styles/regularFont";
-import { stylesContainer } from "../../styles/container";
-
-import React, { useState } from "react";
-import { View, StyleSheet, KeyboardAvoidingView, TouchableWithoutFeedback, Keyboard, Text } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import React, { useState } from "react";
+import { Keyboard, Text, TouchableWithoutFeedback, View } from "react-native";
+import { stylesContainer } from "../../styles/container";
+import { stylesRegularFont } from "../../styles/regularFont";
+import { AgreementButton } from "../components/AgreementButton";
+import { AuthFieldset } from "../components/AuthFieldset";
+import { ButtonCustom } from "../components/ButtonCustom";
+import { Logo } from "../components/Logo";
 import { THEME } from "../theme";
 
-export const Authorization = ({ buttonText = "Вход", buttonBottomText = "Регистрация", signInHandler }) => {
-  const signIn = () => signInHandler(true);
+export const Authorization = ({ buttonText = "Вход", buttonBottomText = "Регистрация", setIsSignedIn, isSignedIn, setUser, user }) => {
   const navigation = useNavigation();
   const gotoSignUp = () => {
     navigation.navigate("Регистрация");
+  };
+  const gotoAgreement = () => {
+    navigation.navigate("Пользовательское соглашение");
   };
 
   const onSubmitHandler = () => {
@@ -38,6 +38,10 @@ export const Authorization = ({ buttonText = "Вход", buttonBottomText = "Р�
               setIsError(true);
               setMessage(jsonRes.message);
             } else {
+              setUser(jsonRes.login);
+              //console.log(user);
+              setIsSignedIn(true);
+              //console.log(isSignedIn);
               onLoggedIn(jsonRes.token);
               setIsError(false);
               setMessage(jsonRes.message);
@@ -98,11 +102,11 @@ export const Authorization = ({ buttonText = "Вход", buttonBottomText = "Р�
         <Text style={{ color: isError ? THEME.DANGER_COLOR : THEME.MAIN_GREEN }}>{message ? getMessage() : null}</Text>
         <View style={{ marginTop: "auto", justifyContent: "flex-end" }}>
           {/* <ButtonCustom buttonText={buttonText} onClick={signIn} /> */}
-          <ButtonCustom buttonText={buttonText} onClick={(onSubmitHandler, signIn)} />
+          <ButtonCustom buttonText={buttonText} onClick={onSubmitHandler} />
           <ButtonCustom buttonText={buttonBottomText} onClick={gotoSignUp} />
         </View>
 
-        <Agreement />
+        <AgreementButton onClick={gotoAgreement} />
       </View>
     </TouchableWithoutFeedback>
   );

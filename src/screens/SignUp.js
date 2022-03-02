@@ -1,7 +1,7 @@
 import { AuthFieldset } from "../components/AuthFieldset";
 import { Logo } from "../components/Logo";
 import { ButtonCustom } from "../components/ButtonCustom";
-import { Agreement } from "../components/Agreement";
+import { AgreementButton } from "../components/AgreementButton";
 
 import { stylesRegularFont } from "../../styles/regularFont";
 import { stylesContainer } from "../../styles/container";
@@ -16,6 +16,9 @@ export const SignUp = ({ buttonText = "Регистрация", buttonBottomText
   const navigation = useNavigation();
   const gotoSignUp = () => {
     navigation.popToTop();
+  };
+  const gotoAgreement = () => {
+    navigation.navigate("Пользовательское соглашение");
   };
 
   const onLoggedIn = (token) => {
@@ -102,14 +105,14 @@ export const SignUp = ({ buttonText = "Регистрация", buttonBottomText
       <View style={[stylesContainer.container, { flex: 1, paddingBottom: 0 }]}>
         <Logo />
         <AuthFieldset isSignUp={true} setLogin={setLogin} setPassword={setPassword} setPasswordRepeat={setPasswordRepeat} />
-        <Text style={{ color: isError ? THEME.DANGER_COLOR : THEME.MAIN_GREENr }}>{message ? getMessage() : null}</Text>
+        <Text style={{ color: isError ? THEME.DANGER_COLOR : THEME.MAIN_GREEN }}>{message ? getMessage() : null}</Text>
         <View style={{ marginTop: "auto", justifyContent: "flex-end" }}>
           {/* <ButtonCustom buttonText={buttonText} onClick={signUp} /> */}
           <ButtonCustom buttonText={buttonText} onClick={onSubmitHandler} />
           <ButtonCustom buttonText={buttonBottomText} onClick={gotoSignUp} />
         </View>
 
-        <Agreement />
+        <AgreementButton onClick={gotoAgreement} />
       </View>
     </TouchableWithoutFeedback>
   );

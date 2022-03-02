@@ -12,7 +12,7 @@ export const Progress = (
   props,
   {
     //percentage = 65,
-    radius = 200,
+    radius = 190,
     strokeWidth = 61,
     duration = 500,
     color = THEME.MAIN_GREEN,

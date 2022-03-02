@@ -15,7 +15,7 @@ export const CourseCard = (props) => {
         marginHorizontal: 6,
         ...props.style,
       }}>
-      <TouchableOpacity onPress={() => navigation.navigate("курс будет", { title: props.title })}>
+      <TouchableOpacity onPress={() => navigation.navigate("Курс", { title: props.title, id: props.id })}>
         <View style={{ justifyContent: "space-between" }}>
           <View style={{ borderRadius: 15, overflow: "hidden" }}>
             <Image source={{ uri: props.uri }} style={{ height: 114, width: null, resizeMode: "contain" }} />

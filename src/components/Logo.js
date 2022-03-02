@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, Image, View } from "react-native";
 
-export const Logo = (props) => {
+export const Logo = () => {
   return (
     <View style={styles.logoContainer}>
       <View style={styles.logo}>

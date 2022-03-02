@@ -1,7 +1,7 @@
 import "react-native-gesture-handler";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { BackButton } from "./src/components/ui/BackButton";
+import { BackButton } from "./src/components/BackButton";
 //import { StatusBar } from 'expo-status-bar';
 import React, { useState } from "react";
 //import * as Font from "expo-font";
@@ -15,7 +15,9 @@ import { SupportTicket } from "./src/screens/SupportTicket";
 // import { Preloader } from "./src/screens/Preloader";
 import { Courses } from "./src/screens/Courses";
 import { CourseInner } from "./src/screens/CourseInner";
+import { LessonInner } from "./src/screens/LessonInner";
 import { Certificate } from "./src/screens/Certificate";
+import { Agreement } from "./src/screens/Agreement";
 // import { RateUs } from "./src/screens/RateUs";
 
 function PassRec1({ navigation }) {
@@ -34,39 +36,8 @@ function _SignUp({ navigation }) {
   return <SignUp />;
 }
 
-function Support({ navigation }) {
-  return <SupportTicket buttonText={"Отправить"} />;
-}
-
-function Course({ route, navigation }) {
-  const { title } = route.params;
-  return (
-    <CourseInner
-      buttonText={"Показать сертификат"}
-      complete={12}
-      overall={14}
-      description={`<p>Нам интересно не только получать новые знания, но и делиться наработанным опытом с коллегами, поэтому в «Текстерре» на регулярной основе проводятся <strong>«обучалки»</strong>, на которых каждый желающий может выступить с докладом на любую профессиональную тему.</p>
-      <p>Ко всему прочему с сентября 2018 года мы запустили собственные онлайн-курсы и основали <a target="_blank" href="https://teachline.ru/">учебный центр TeachLine</a>. В ноябре 2018 началось обучение второго потока курсов «<a target="_blank" href="https://teachline.ru/courses/internet-marketolog/">Интернет-маркетолог</a>» и «<a target="_blank" href="https://teachline.ru/courses/blog-courses/">Контент-маркетолог</a>». С начала 2019 года запустили курсы «<a target="_blank" href="https://teachline.ru/courses/smm/">SMM-специалист</a>», «<a target="_blank" href="https://teachline.ru/courses/commercial-author/">Коммерческий автор</a>» и многие другие. </p>
-      <p>Теперь наши сотрудники делятся опытом не только друг с другом, но и со всеми, кто хочет развиваться в профессии.</p>
-      <!--Слайдер Обучалки-->
-      
-    <div class='about-texterra '>
-    <div><a href="/upload/iblock/df6/5.jpg" class="fancy_nr"><img src="/upload/iblock/df6/5.jpg" alt="Обучалки" title="Обучалки"></a></div><div><a href="/upload/iblock/5a0/6.jpg" class="fancy_nr"><img src="/upload/iblock/5a0/6.jpg" alt="Обучалки" title="Обучалки"></a></div>	
-    </div>
-      <p>В «Текстерре» на регулярной основе проводятся <strong>психологические тренинги</strong>. Они помогают нам лучше узнавать себя и друг друга, учиться новым полезным навыкам и не перегорать эмоционально. </p>
-      <p>К тому же, с августа 2018 года мы стерли рамки между компанией и внешним миром, открыли креативное пространство OZ HUB и начали проводить различные митапы, психологические тренинги, игры и другие мероприятия, куда могут прийти не только сотрудники компании, но и любой другой житель нашего города.</p>
-    
-      <div class="about-texterra">
-      <div>
-           <img alt="психологические тренинги" title="психологические тренинги" src="/upload/about-us/slaider1.jpg">
-      </div>
-      <div>
-           <img alt="психологические тренинги" title="психологические тренинги" src="/upload/about-us/slaider2.jpg">
-      </div>
-     
-      </div>`}
-    />
-  );
+function _Agreement({ navigation }) {
+  return <Agreement />;
 }
 
 function _Certificate({ navigation }) {
@@ -97,13 +68,28 @@ export default function App() {
 
   const [loaded, error] = useFonts(customFonts);
   const [isSignedIn, setIsSignedIn] = useState(false);
+  const [user, setUser] = useState("");
 
   function HomeScreen({ navigation }) {
-    return <Authorization signInHandler={setIsSignedIn} />;
+    return <Authorization isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} user={user} setUser={setUser} />;
   }
 
   function MyCourses({ navigation }) {
-    return <Courses signInHandler={setIsSignedIn} />;
+    return <Courses isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} user={user} />;
+  }
+
+  function Course({ route, navigation }) {
+    const { title, id } = route.params;
+    return <CourseInner user={user} buttonText={"Показать сертификат"} id={id} />;
+  }
+
+  function Lesson({ route, navigation }) {
+    const { title, id, desc, isComplete, courseId } = route.params;
+    return <LessonInner user={user} id={id} desc={desc} isComplete={isComplete} courseId={courseId} />;
+  }
+
+  function Support({ navigation }) {
+    return <SupportTicket buttonText={"Отправить"} user={user} />;
   }
 
   // async function loadApp() {
@@ -121,13 +107,24 @@ export default function App() {
           cardStyle: { backgroundColor: "#fff" },
           headerBackImage: () => <BackButton />,
           headerTintColor: "#10112A",
-          headerTitleStyle: {},
+          headerTitleStyle: { fontSize: 16 },
         }}>
         {isSignedIn ? (
           <>
             <Stack.Screen name='Мои курсы' component={MyCourses} />
             <Stack.Screen name='Заявка в поддержку' component={Support} />
-            <Stack.Screen name='курс будет' component={Course} options={({ route }) => ({ title: route.params.title })} />
+            <Stack.Screen name='Курс' component={Course} options={({ route }) => ({ title: route.params.title, id: route.params.id })} />
+            <Stack.Screen
+              name='Урок'
+              component={Lesson}
+              options={({ route }) => ({
+                title: route.params.title,
+                id: route.params.id,
+                desc: route.params.desc,
+                isComplete: route.params.isComplete,
+                courseId: route.params.courseId,
+              })}
+            />
             <Stack.Screen name='Сертификат' component={_Certificate} />
           </>
         ) : (
@@ -137,6 +134,7 @@ export default function App() {
             <Stack.Screen name='Восстановление пароля 2/3' component={PassRec2} />
             <Stack.Screen name='Восстановление пароля 3/3' component={PassRec3} />
             <Stack.Screen name='Регистрация' component={_SignUp} />
+            <Stack.Screen name='Пользовательское соглашение' component={_Agreement} />
           </>
         )}
       </Stack.Navigator>

@@ -7,7 +7,7 @@ import { THEME } from "../theme";
 
 export const CourseDesc = (props) => {
   const [textIsShown, setTextIsShown] = useState(true);
-  const renderViewMore = (onPress) => {
+  const renderViewMore = () => {
     return (
       <View style={{ alignSelf: "flex-start" }}>
         <Text
@@ -20,7 +20,6 @@ export const CourseDesc = (props) => {
           }}
           onPress={() => {
             setTextIsShown(false);
-            onPress;
           }}>
           показать полностью
         </Text>
@@ -28,13 +27,13 @@ export const CourseDesc = (props) => {
     );
   };
 
-  return textIsShown ? (
-    <ViewMoreText numberOfLines={5} renderViewMore={renderViewMore} textStyle={{ textAlign: "left" }}>
+  return textIsShown && props.description.length > 250 ? (
+    <ViewMoreText numberOfLines={5} renderViewMore={renderViewMore} textStyle={{ textAlign: "left", marginBottom: 20 }}>
       <DisplayReg style={{ fontSize: 17, lineHeight: 22 }}>{props.description.replace(/(<([^>]+)>)/gi, "").substring(0, 250)}</DisplayReg>
     </ViewMoreText>
   ) : (
     <HTML
-      baseFontStyle={{ fontSize: 17, fontFamily: "SF-Display-Regular", lineHeight: 21 }}
+      baseFontStyle={{ fontSize: 17, fontFamily: "SF-Display-Regular", lineHeight: 21, marginBottom: 20 }}
       source={{
         html: `${props.description}`,
       }}></HTML>

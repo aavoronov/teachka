@@ -2,14 +2,19 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { StyleSheet, Text, View, TouchableOpacity, Image } from "react-native";
 
-export const NavbarBottom = (props, { onClick }) => {
+export const NavbarBottom = ({ signOut }) => {
   const navigation = useNavigation();
+  // const signOut = () => {
+  //   signInHandler(false);
+  //   console.log(isSignedIn);
+  //   navigation.navigate("Вход в систему");
+  // };
   return (
     <View style={styles.navbarBottom}>
-      <TouchableOpacity onPress={() => alert("Профиль")} style={styles.buttonContainer}>
+      {/* <TouchableOpacity onPress={() => alert("Профиль")} style={styles.buttonContainer}>
         <Image source={require("../../assets/img/profile-icon.png")} style={{ width: 35, height: 35 }} />
         <Text>Профиль</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <TouchableOpacity onPress={() => navigation.navigate("Мои курсы")} style={styles.buttonContainer}>
         <Image source={require("../../assets/img/courses-icon.png")} style={{ width: 35, height: 35 }} />
         <Text>Курсы</Text>
@@ -18,12 +23,9 @@ export const NavbarBottom = (props, { onClick }) => {
         <Image source={require("../../assets/img/support-icon.png")} style={{ width: 35, height: 35 }} />
         <Text>Поддержка</Text>
       </TouchableOpacity>
-      <TouchableOpacity onPress={() => navigation.navigate("курс будет")} style={styles.buttonContainer}>
-        <Image source={require("../../assets/img/repairing-service.png")} style={{ width: 35, height: 35 }} />
-        <Text>Service</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={() => onClick} style={styles.buttonContainer}>
-        <Image source={require("../../assets/img/repairing-service.png")} style={{ width: 35, height: 35 }} />
+
+      <TouchableOpacity onPress={signOut} style={styles.buttonContainer}>
+        <Image source={require("../../assets/img/logout-icon.png")} style={{ width: 30, height: 33 }} />
         <Text>Выход</Text>
       </TouchableOpacity>
     </View>
